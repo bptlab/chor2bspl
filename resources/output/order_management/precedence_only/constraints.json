@@ -1,0 +1,20 @@
+[
+  {
+    "from": "Buyer->Shop: Invoice_paid",
+    "fromMessageId": 2,
+    "fromTaskId": "ChoreographyTask_08lfcss",
+    "to": "Shop->Warehouse: Order_created",
+    "toMessageId": 7,
+    "toTaskId": "ChoreographyTask_194p62d",
+    "type": "precedes"
+  },
+  {
+    "from": "Shop->Buyer: Invoice_open",
+    "fromMessageId": 1,
+    "fromTaskId": "ChoreographyTask_0dwdv4v",
+    "to": "Buyer->Shop: Order_canceled",
+    "toMessageId": 3,
+    "toTaskId": "ChoreographyTask_13fm4jm",
+    "type": "precedes"
+  }
+]

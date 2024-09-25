@@ -1,0 +1,31 @@
+
+Choreography {
+  roles Consignee, Supplier, Customs, Carrier, Port
+  parameters out ordId key, out created, out canceled, out impId key, out checkrequired, out accepted, out rejected, out conId key, out packed, out approved, out arrived, out delivered, out bolId key, out init
+  private fw_Consignee_Supplier_Order_created, fw_Consignee_Customs_Order_created, fw_Consignee_Customs_ImportPermit_accepted, fw_Consignee_Customs_ImportPermit_checkrequired, fw_Consignee_Carrier_BillOfLading_init, fw_Supplier_Consignee_BillOfLading_init, fw_Consignee_Supplier_ImportPermit_accepted, fw_Consignee_Supplier_ImportPermit_checkrequired, cf_e0, cf_e1, cf_p0_0, cf_p0_1, cf_p1_0, cf_p2_0, cf_p3_0, cf_p4_0, cf_p4_1, cf_p5_0, cf_p6_0, cf_p7_0, cf_p8_0, cf_p9_0, cf_p10_0
+
+  Carrier -> Consignee: Container_arrived [in approved, in conId, out arrived, out cf_p1_0, out cf_p6_0]
+  Carrier -> Consignee: Container_delivered [in arrived, in cf_p5_0, in conId, out delivered]
+  Carrier -> Supplier: BillOfLading_init [in conId, out bolId, out init]
+  Consignee -> Carrier: BillOfLading_init [in bolId, in cf_p4_0, in init, out cf_p5_0, out fw_Consignee_Carrier_BillOfLading_init]
+  Consignee -> Carrier: BillOfLading_init [in bolId, in cf_p4_1, in init, out cf_p5_0, out fw_Consignee_Carrier_BillOfLading_init]
+  Consignee -> Customs: ImportPermit_accepted [in accepted, in cf_p1_0, in impId, out cf_e1, out cf_p4_0, out fw_Consignee_Customs_ImportPermit_accepted]
+  Consignee -> Customs: ImportPermit_checkrequired [in cf_p6_0, in checkrequired, in impId, out cf_e1, out cf_p7_0, out cf_p8_0, out fw_Consignee_Customs_ImportPermit_checkrequired, nil accepted, nil rejected]
+  Consignee -> Customs: Order_created [in cf_p10_0, in created, in ordId, out fw_Consignee_Customs_Order_created, nil canceled]
+  Consignee -> Customs: Order_created [in cf_p10_0, out created, out fw_Consignee_Customs_Order_created, out ordId]
+  Consignee -> Supplier: ImportPermit_accepted [in accepted, in cf_p9_0, in impId, out cf_p0_0, out fw_Consignee_Supplier_ImportPermit_accepted]
+  Consignee -> Supplier: ImportPermit_checkrequired [in checkrequired, in impId, out cf_p0_1, out fw_Consignee_Supplier_ImportPermit_checkrequired, nil accepted, nil rejected]
+  Consignee -> Supplier: Order_canceled [in cf_p2_0, in created, in ordId, out canceled]
+  Consignee -> Supplier: Order_created [in created, in ordId, out cf_p10_0, out fw_Consignee_Supplier_Order_created, nil canceled]
+  Consignee -> Supplier: Order_created [out cf_p10_0, out created, out fw_Consignee_Supplier_Order_created, out ordId]
+  Customs -> Consignee: ImportPermit_accepted [in cf_p7_0, in checkrequired, in impId, out accepted, out cf_p4_1, nil rejected]
+  Customs -> Consignee: ImportPermit_accepted [in cf_p7_0, in ordId, out accepted, out cf_p4_1, out impId]
+  Customs -> Consignee: ImportPermit_accepted [in checkrequired, in impId, out accepted, out cf_e0, out cf_p9_0, nil rejected]
+  Customs -> Consignee: ImportPermit_accepted [in ordId, out accepted, out cf_e0, out cf_p9_0, out impId]
+  Customs -> Consignee: ImportPermit_checkrequired [in ordId, out cf_e0, out checkrequired, out impId]
+  Customs -> Consignee: ImportPermit_rejected [in cf_p8_0, in checkrequired, in impId, out cf_p2_0, out rejected, nil accepted]
+  Supplier -> Carrier: Container_approved [in cf_p3_0, in conId, in packed, out approved]
+  Supplier -> Carrier: Container_packed [in cf_p0_0, in ordId, out conId, out packed]
+  Supplier -> Carrier: Container_packed [in cf_p0_1, in ordId, out conId, out packed]
+  Supplier -> Consignee: BillOfLading_init [in bolId, in init, out cf_p3_0, out fw_Supplier_Consignee_BillOfLading_init]
+}

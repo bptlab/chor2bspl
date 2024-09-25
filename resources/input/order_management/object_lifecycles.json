@@ -1,0 +1,114 @@
+{
+  "Order": {
+    "states": [
+      {
+        "name": "created",
+        "attributes": [
+          "ordId",
+          "item",
+          "address"
+        ]
+      },
+      {
+        "name": "canceled",
+        "attributes": [
+          "canceled"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "created",
+        "participant": "Buyer"
+      },
+      {
+        "from": "created",
+        "to": "canceled",
+        "participant": "Buyer"
+      }
+    ]
+  },
+  "Invoice": {
+    "states": [
+      {
+        "name": "open",
+        "attributes": [
+          "invId",
+          "total",
+          "tax"
+        ]
+      },
+      {
+        "name": "paid",
+        "attributes": [
+          "transactionId"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "open",
+        "participant": "Shop"
+      },
+      {
+        "from": "open",
+        "to": "paid",
+        "participant": "Buyer"
+      }
+    ]
+  },
+  "Parcel": {
+    "states": [
+      {
+        "name": "packed",
+        "attributes": [
+          "parId",
+          "dimensions",
+          "weight"
+        ]
+      },
+      {
+        "name": "authorized",
+        "attributes": [
+          "authorized"
+        ]
+      },
+      {
+        "name": "shipped",
+        "attributes": [
+          "trackingNo"
+        ]
+      },
+      {
+        "name": "received",
+        "attributes": [
+          "receiptDate"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "packed",
+        "participant": "Warehouse"
+      },
+      {
+        "from": "packed",
+        "to": "authorized",
+        "participant": "Shop"
+      },
+      {
+        "from": "authorized",
+        "to": "shipped",
+        "participant": "Warehouse"
+      },
+      {
+        "from": "shipped",
+        "to": "received",
+        "participant": "Buyer"
+      }
+    ]
+  }
+}

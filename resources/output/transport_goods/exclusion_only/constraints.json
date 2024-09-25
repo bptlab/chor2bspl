@@ -1,0 +1,20 @@
+[
+  {
+    "from": "Customs->Consignee: ImportPermit_accepted",
+    "fromMessageId": 4,
+    "fromTaskId": "ChoreographyTask_1cxrtck",
+    "to": "Customs->Consignee: ImportPermit_checkrequired",
+    "toMessageId": 6,
+    "toTaskId": "ChoreographyTask_0h03dmw",
+    "type": "exclusive"
+  },
+  {
+    "from": "Consignee->Customs: ImportPermit_accepted",
+    "fromMessageId": 10,
+    "fromTaskId": "ChoreographyTask_151cb01",
+    "to": "Consignee->Customs: ImportPermit_checkrequired",
+    "toMessageId": 11,
+    "toTaskId": "ChoreographyTask_14geat4",
+    "type": "exclusive"
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "Order": {
+    "attributes": [
+      "ordId",
+      "item",
+      "address",
+      "canceled"
+    ],
+    "keys": [
+      "ordId"
+    ],
+    "relations": [
+      {
+        "class": "Invoice",
+        "lowerBound": 0,
+        "upperBound": 1
+      },
+      {
+        "class": "Parcel",
+        "lowerBound": 0,
+        "upperBound": 1
+      }
+    ]
+  },
+  "Invoice": {
+    "attributes": [
+      "invId",
+      "total",
+      "tax",
+      "transactionId"
+    ],
+    "keys": [
+      "invId"
+    ],
+    "relations": [
+      {
+        "class": "Order",
+        "lowerBound": 1,
+        "upperBound": 1
+      }
+    ]
+  },
+  "Parcel": {
+    "attributes": [
+      "parId",
+      "dimensions",
+      "weight",
+      "authorized",
+      "trackingNo",
+      "receiptDate"
+    ],
+    "keys": [
+      "parId"
+    ],
+    "relations": [
+      {
+        "class": "Order",
+        "lowerBound": 1,
+        "upperBound": 1
+      }
+    ]
+  }
+}

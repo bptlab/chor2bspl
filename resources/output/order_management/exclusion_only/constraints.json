@@ -1,0 +1,11 @@
+[
+  {
+    "from": "Buyer->Shop: Order_canceled",
+    "fromMessageId": 3,
+    "fromTaskId": "ChoreographyTask_13fm4jm",
+    "to": "Buyer->Shop: Invoice_paid",
+    "toMessageId": 2,
+    "toTaskId": "ChoreographyTask_08lfcss",
+    "type": "exclusive"
+  }
+]

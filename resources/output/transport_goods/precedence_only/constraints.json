@@ -1,0 +1,119 @@
+[
+  {
+    "from": "Consignee->Supplier: ImportPermit_accepted",
+    "fromMessageId": 20,
+    "fromTaskId": "ChoreographyTask_0qisrzo",
+    "to": "Supplier->Carrier: Container_packed",
+    "toMessageId": 7,
+    "toTaskId": "ChoreographyTask_079pq99",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Supplier: ImportPermit_checkrequired",
+    "fromMessageId": 21,
+    "fromTaskId": "ChoreographyTask_1ykmdql",
+    "to": "Supplier->Carrier: Container_packed",
+    "toMessageId": 7,
+    "toTaskId": "ChoreographyTask_079pq99",
+    "type": "precedes"
+  },
+  {
+    "from": "Carrier->Consignee: Container_arrived",
+    "fromMessageId": 9,
+    "fromTaskId": "ChoreographyTask_1uu4d7r",
+    "to": "Consignee->Customs: ImportPermit_accepted",
+    "toMessageId": 10,
+    "toTaskId": "ChoreographyTask_151cb01",
+    "type": "precedes"
+  },
+  {
+    "from": "Customs->Consignee: ImportPermit_rejected",
+    "fromMessageId": 14,
+    "fromTaskId": "ChoreographyTask_12b07z5",
+    "to": "Consignee->Supplier: Order_canceled",
+    "toMessageId": 15,
+    "toTaskId": "ChoreographyTask_144e25v",
+    "type": "precedes"
+  },
+  {
+    "from": "Supplier->Consignee: BillOfLading_init",
+    "fromMessageId": 19,
+    "fromTaskId": "ChoreographyTask_075ryxp",
+    "to": "Supplier->Carrier: Container_approved",
+    "toMessageId": 18,
+    "toTaskId": "ChoreographyTask_1isemxe",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Customs: ImportPermit_accepted",
+    "fromMessageId": 10,
+    "fromTaskId": "ChoreographyTask_151cb01",
+    "to": "Consignee->Carrier: BillOfLading_init",
+    "toMessageId": 16,
+    "toTaskId": "ChoreographyTask_1sxk19l",
+    "type": "precedes"
+  },
+  {
+    "from": "Customs->Consignee: ImportPermit_accepted",
+    "fromMessageId": 12,
+    "fromTaskId": "ChoreographyTask_19drizj",
+    "to": "Consignee->Carrier: BillOfLading_init",
+    "toMessageId": 16,
+    "toTaskId": "ChoreographyTask_1sxk19l",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Carrier: BillOfLading_init",
+    "fromMessageId": 16,
+    "fromTaskId": "ChoreographyTask_1sxk19l",
+    "to": "Carrier->Consignee: Container_delivered",
+    "toMessageId": 17,
+    "toTaskId": "ChoreographyTask_0lqa2su",
+    "type": "precedes"
+  },
+  {
+    "from": "Carrier->Consignee: Container_arrived",
+    "fromMessageId": 9,
+    "fromTaskId": "ChoreographyTask_1uu4d7r",
+    "to": "Consignee->Customs: ImportPermit_checkrequired",
+    "toMessageId": 11,
+    "toTaskId": "ChoreographyTask_14geat4",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Customs: ImportPermit_checkrequired",
+    "fromMessageId": 11,
+    "fromTaskId": "ChoreographyTask_14geat4",
+    "to": "Customs->Consignee: ImportPermit_accepted",
+    "toMessageId": 12,
+    "toTaskId": "ChoreographyTask_19drizj",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Customs: ImportPermit_checkrequired",
+    "fromMessageId": 11,
+    "fromTaskId": "ChoreographyTask_14geat4",
+    "to": "Customs->Consignee: ImportPermit_rejected",
+    "toMessageId": 14,
+    "toTaskId": "ChoreographyTask_12b07z5",
+    "type": "precedes"
+  },
+  {
+    "from": "Customs->Consignee: ImportPermit_accepted",
+    "fromMessageId": 4,
+    "fromTaskId": "ChoreographyTask_1cxrtck",
+    "to": "Consignee->Supplier: ImportPermit_accepted",
+    "toMessageId": 20,
+    "toTaskId": "ChoreographyTask_0qisrzo",
+    "type": "precedes"
+  },
+  {
+    "from": "Consignee->Supplier: Order_created",
+    "fromMessageId": 0,
+    "fromTaskId": "ChoreographyTask_1uc6wsk",
+    "to": "Consignee->Customs: Order_created",
+    "toMessageId": 2,
+    "toTaskId": "ChoreographyTask_09duc13",
+    "type": "precedes"
+  }
+]

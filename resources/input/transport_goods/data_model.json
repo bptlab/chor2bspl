@@ -1,0 +1,82 @@
+{
+  "Order": {
+    "attributes": [
+      "ordId",
+      "created",
+      "canceled"
+    ],
+    "keys": [
+      "ordId"
+    ],
+    "relations": [
+      {
+        "class": "ImportPermit",
+        "lowerBound": 0,
+        "upperBound": 1
+      },
+      {
+        "class": "Container",
+        "lowerBound": 0,
+        "upperBound": 1
+      }
+    ]
+  },
+  "ImportPermit": {
+    "attributes": [
+      "impId",
+      "checkrequired",
+      "accepted",
+      "rejected"
+    ],
+    "keys": [
+      "impId"
+    ],
+    "relations": [
+      {
+        "class": "Order",
+        "lowerBound": 1,
+        "upperBound": 1
+      }
+    ]
+  },
+  "Container": {
+    "attributes": [
+      "conId",
+      "packed",
+      "approved",
+      "arrived",
+      "delivered"
+    ],
+    "keys": [
+      "conId"
+    ],
+    "relations": [
+      {
+        "class": "Order",
+        "lowerBound": 1,
+        "upperBound": 1
+      },
+      {
+        "class": "BillOfLading",
+        "lowerBound": 0,
+        "upperBound": 1
+      }
+    ]
+  },
+  "BillOfLading": {
+    "attributes": [
+      "bolId",
+      "init"
+    ],
+    "keys": [
+      "bolId"
+    ],
+    "relations": [
+      {
+        "class": "Container",
+        "lowerBound": 1,
+        "upperBound": 1
+      }
+    ]
+  }
+}

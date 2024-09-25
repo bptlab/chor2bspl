@@ -1,0 +1,16 @@
+
+OrderManagement {
+  roles Shop, Warehouse, Buyer
+  parameters out ordId key, out item, out address, out canceled, out invId key, out total, out tax, out transactionId, out parId key, out dimensions, out weight, out authorized, out trackingNo, out receiptDate
+  private fw_Shop_Warehouse_Order_created, cf_e0
+
+  Buyer -> Shop: Invoice_paid [in invId, in tax, in total, out cf_e0, out transactionId]
+  Buyer -> Shop: Order_canceled [in address, in item, in ordId, out canceled, out cf_e0]
+  Buyer -> Shop: Order_created [out address, out item, out ordId]
+  Buyer -> Warehouse: Parcel_received [in parId, in trackingNo, out receiptDate]
+  Shop -> Buyer: Invoice_open [in ordId, out invId, out tax, out total]
+  Shop -> Warehouse: Order_created [in address, in item, in ordId, out fw_Shop_Warehouse_Order_created, nil canceled]
+  Shop -> Warehouse: Parcel_authorized [in dimensions, in parId, in weight, out authorized]
+  Warehouse -> Buyer: Parcel_shipped [in authorized, in parId, out trackingNo]
+  Warehouse -> Shop: Parcel_packed [in ordId, out dimensions, out parId, out weight]
+}

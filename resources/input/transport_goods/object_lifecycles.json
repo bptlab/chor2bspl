@@ -1,0 +1,151 @@
+{
+  "Order": {
+    "states": [
+      {
+        "name": "created",
+        "attributes": [
+          "ordId",
+          "created"
+        ]
+      },
+      {
+        "name": "canceled",
+        "attributes": [
+          "canceled"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "created",
+        "participant": "Consignee"
+      },
+      {
+        "from": "created",
+        "to": "canceled",
+        "participant": "Consignee"
+      }
+    ]
+  },
+  "ImportPermit": {
+    "states": [
+      {
+        "name": "checkrequired",
+        "attributes": [
+          "impId",
+          "checkrequired"
+        ]
+      },
+      {
+        "name": "accepted",
+        "attributes": [
+          "accepted"
+        ]
+      },
+      {
+        "name": "checkrequired",
+        "attributes": [
+          "checkrequired"
+        ]
+      },
+      {
+        "name": "rejected",
+        "attributes": [
+          "rejected"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "checkrequired",
+        "participant": "Customs"
+      }, 
+      {
+        "from": "checkrequired",
+        "to": "accepted",
+        "participant": "Customs"
+      },
+      {
+        "from": "checkrequired",
+        "to": "rejected",
+        "participant": "Customs"
+      },
+      {
+        "from": null,
+        "to": "accepted",
+        "participant": "Customs"
+      }
+    ]
+  },
+  "Container": {
+    "states": [
+      {
+        "name": "packed",
+        "attributes": [
+          "conId",
+          "packed"
+        ]
+      },
+      {
+        "name": "approved",
+        "attributes": [
+          "approved"
+        ]
+      },
+      {
+        "name": "arrived",
+        "attributes": [
+          "arrived"
+        ]
+      },
+      {
+        "name": "delivered",
+        "attributes": [
+          "delivered"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "packed",
+        "participant": "Supplier"
+      },
+      {
+        "from": "packed",
+        "to": "approved",
+        "participant": "Supplier"
+      },
+      {
+        "from": "approved",
+        "to": "arrived",
+        "participant": "Carrier"
+      },
+      {
+        "from": "arrived",
+        "to": "delivered",
+        "participant": "Carrier"
+      }
+    ]
+  },
+  "BillOfLading": {
+    "states": [
+      {
+        "name": "init",
+        "attributes": [
+          "bolId",
+          "init"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "from": null,
+        "to": "init",
+        "participant": "Carrier"
+      }
+    ]
+  }
+}
