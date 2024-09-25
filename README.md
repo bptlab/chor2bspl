@@ -1,4 +1,4 @@
-# Prototype: From Visual Choreographies to Flexible Information Protocols
+# chor2bspl
 
 This repository contains a prototypical CLI tool for translating object-aware BPMN choreography diagrams into BSPL information protocols. The implementation was developed in the context of a research paper titled "From Visual Choreographies to Flexible Information Protocols".
 
