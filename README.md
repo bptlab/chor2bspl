@@ -25,8 +25,8 @@ A screencast (`screencast.mp4`) can be found in the root directory.
 
 1. Clone the repository:
    ```bash
-   git clone <anonymized>
-   cd <anonymized>
+   git clone git@github.com:bptlab/chor2bspl.git
+   cd chor2bspl
    ```
 
 2. Install dependencies:
